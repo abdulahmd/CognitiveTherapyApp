@@ -5,12 +5,8 @@ const Page4 = ({ patientData, setStep, setSchedule }) => {
   const [activities, setActivities] = useState([]);
 
   useEffect(() => {
-    // Define a mapping from numerical days to day names
+    
     const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-
-    // Generate the personalized weekly schedule based on patientData using day names
-    // This is a simplified example; you can modify it as needed.
-
     const week1Activities = [
       {
         day: 'Sunday',

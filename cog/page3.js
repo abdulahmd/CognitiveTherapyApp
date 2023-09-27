@@ -5,10 +5,7 @@ const Page3 = ({ onNext, setMood }) => {
   const [mood, setMoodText] = useState('');
 
   const handleNext = () => {
-    // Store the patient's mood description
     setMood(mood);
-
-    // Proceed to the next page
     onNext();
   };
 

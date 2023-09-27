@@ -13,12 +13,7 @@ const Page2 = ({ onNext, setPatientSurvey }) => {
   });
 
   const handleNext = () => {
-    // Validate the inputs if needed
-
-    // Store the patient survey data
     setPatientSurvey(formData);
-
-    // Proceed to the next page
     onNext();
   };
 
