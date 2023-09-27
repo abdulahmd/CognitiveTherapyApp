@@ -60,8 +60,38 @@ export default function App() {
 
           <TextInput
             style={styles.input}
-            placeholder="How do you feel today?"
-            onChangeText={(text) => setPatientData({ ...patientData, mood: text })}
+            placeholder="Favorite Song"
+            onChangeText={(text) => setPatientData({ ...patientData, favoriteSong: text })}
+          />
+
+          <TextInput
+            style={styles.input}
+            placeholder="Favorite Sport"
+            onChangeText={(text) => setPatientData({ ...patientData, favoriteSport: text })}
+          />
+
+          <TextInput
+            style={styles.input}
+            placeholder="Favorite Sports Team"
+            onChangeText={(text) => setPatientData({ ...patientData, favoriteSportTeam: text })}
+          />
+
+          <TextInput
+            style={styles.input}
+            placeholder="Previous Occupation"
+            onChangeText={(text) => setPatientData({ ...patientData, occupation: text })}
+          />
+
+          <TextInput
+            style={styles.input}
+            placeholder="Favorite Movie"
+            onChangeText={(text) => setPatientData({ ...patientData, favoriteMovie: text })}
+          />
+
+          <TextInput
+            style={styles.input}
+            placeholder="Favorite TV Show"
+            onChangeText={(text) => setPatientData({ ...patientData, favoriteTVShow: text })}
           />
           <Button title="Next" onPress={() => setStep(3)} />
         </View>
@@ -104,7 +134,9 @@ export default function App() {
               </View>
             </View>
           </View>
-          <Button title="Back" onPress={() => setStep(2)} />
+          <Button title="Next Week" onPress={() => setStep(4)} />
+          <View style={styles.spaceBetButts} />
+          <Button title="Back" onPress={() => setStep(1)} />
         </ScrollView>
       )}
     </ScrollView>
@@ -178,5 +210,8 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 40,
     paddingBottom: 20,
+  },
+  spaceBetButts: {
+    marginBottom: 10,
   }
 });
