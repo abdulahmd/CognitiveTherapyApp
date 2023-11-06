@@ -16,7 +16,7 @@ export default function App() {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      {step === 1 && (
+      {step == 1 && (
         <View style={styles.form}>
           <Text style={styles.header}>Caregiver Information</Text>
 
@@ -41,9 +41,10 @@ export default function App() {
 
           <View style={styles.brainContainer}>
             <Image
-              source={require('./brain.png')}
+              source={require('./assets/ai.png')}
               style={styles.brain}
             />
+
           </View>
         </View>
       )}
@@ -227,7 +228,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
-    backgroundColor: '#66ccff'
+    backgroundColor: '#66ccff',
   },
   header: {
     fontSize: 24,
@@ -261,10 +262,8 @@ const styles = StyleSheet.create({
     height: 150,
   },
   brain: {
-    flex: 1,
-    resizeMode: 'contain',
-    width: null,
-    height: null,
+    width: 150,
+    height: 150,
   },
   activity: {
     textAlign: 'center',
