@@ -19,7 +19,6 @@ export default function App() {
     <ScrollView contentContainerStyle={styles.container}>
       {step == 1 && (
         <View style={styles.form}>
-        <ImageBackground source={background} resizeMode="cover"></ImageBackground>
           <Text style={styles.header}>Caregiver Information</Text>
 
           <TextInput
@@ -53,7 +52,6 @@ export default function App() {
 
       {step === 2 && (
         <View style={styles.form}>
-        <ImageBackground source={background} resizeMode="cover"></ImageBackground>
           <Text style={styles.header}>Patient Survey</Text>
 
           <TextInput
@@ -103,7 +101,6 @@ export default function App() {
 
       {step === 3 && (
         <ScrollView style={styles.schedule}>
-        <ImageBackground source={background} resizeMode="cover"></ImageBackground>
           <Text style={styles.weekTitle}>Week 1</Text>
           <View style={styles.scheduleGrid}>
             <View style={styles.scheduleRow}>
@@ -167,7 +164,6 @@ export default function App() {
 
       {step === 4 && (
         <ScrollView style={styles.schedule}>
-        <ImageBackground source={background} resizeMode="cover"></ImageBackground>
           <Text style={styles.weekTitle}>Week 2</Text>
           <View style={styles.scheduleGrid}>
             <View style={styles.scheduleRow}>
