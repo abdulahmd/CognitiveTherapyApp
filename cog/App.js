@@ -1,15 +1,10 @@
 import React, { useState, useRef } from 'react';
-import { View, Text, ScrollView, Button, StyleSheet, TextInput, Image } from 'react-native';
-import { Transition, Transitioning } from 'react-native-reanimated';
+import { ImageBackground, View, Text, ScrollView, Button, StyleSheet, TextInput, Image } from 'react-native';
 import background from './assets/background.png';
 import cogIcon from './assets/cogIcon.png';
+import cogBackground from './assets/cogBackground.jpg';
 
 export default function App() {
-  const transition = <Transition.Together>
-    <Transition.Out type="slide-left" durationMs={400} interpolation="easeIn" />
-    <Transition.In type="slide-right" durationMs={500} />
-  </Transition.Together>;
-
   const ref = useRef();
 
   const [step, setStep] = useState(1);
@@ -24,31 +19,20 @@ export default function App() {
   });
   const [schedule, setSchedule] = useState({});
 
-  const onNext = () => {
-    ref.current.animateNextTransition();
-    setStep(step + 1);
-  };
-
-  const onBack = () => {
-    ref.current.animateNextTransition();
-    setStep(step - 1);
-  };
-
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <Transitioning.View ref={ref} transition={transition}>
         {step === 1 && (
-          <View key={1} style={styles.form}>
+          <View style={styles.form}>
             <Image style={styles.mainIcon} source={require('./assets/cogIcon.png')} />
             <Text style={styles.header}>Cognitive Therapy Support</Text>
             <Text style={styles.normText}>The Official app for all your cognitive therapeutic needs</Text>
             <Text style={styles.normText}>Gold Award Entry</Text>
-            <Button title="Next" onPress={onNext} />
+            <Button title="Next" onPress={() => setStep(2)} />
           </View>
         )}
 
       {step == 2 && (
-        <View key={2} style={styles.form}>
+        <View style={styles.form}>
           <Text style={styles.header}>Caregiver Information</Text>
 
           <TextInput
@@ -73,7 +57,7 @@ export default function App() {
       )}
 
       {step === 3 && (
-        <View key={3} style={styles.form}>
+        <View style={styles.form}>
           <Text style={styles.header}>Patient Survey</Text>
 
           <TextInput
@@ -122,7 +106,7 @@ export default function App() {
       )}
 
       {step === 4 && (
-        <ScrollView key={4} style={styles.schedule}>
+        <ScrollView style={styles.schedule}>
           <Text style={styles.weekTitle}>Week 1</Text>
           <View style={styles.scheduleGrid}>
             <View style={styles.scheduleRow}>
@@ -185,7 +169,7 @@ export default function App() {
       )}
 
       {step === 5 && (
-        <ScrollView key={5} style={styles.schedule}>
+        <ScrollView style={styles.schedule}>
           <Text style={styles.weekTitle}>Week 2</Text>
           <View style={styles.scheduleGrid}>
             <View style={styles.scheduleRow}>
@@ -241,7 +225,6 @@ export default function App() {
           <Button title="Back" onPress={() => setStep(1)} />
         </ScrollView>
       )}
-     </Transitioning.View>
     </ScrollView>
   );
 }
@@ -252,7 +235,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
-    backgroundColor: '#00bfff',
+    backgroundColor: '#115dd6',
   },
   header: {
     fontSize: 24,
