@@ -27,7 +27,7 @@ export default function App() {
             <Text style={styles.header}>Cognitive Therapy Support</Text>
             <Text style={styles.normText}>The Official app for all your cognitive therapeutic needs</Text>
             <Text style={styles.normText}>Gold Award Entry</Text>
-            <Button title="Next" onPress={() => setStep(2)} />
+            <Button title="Start" onPress={() => setStep(2)} />
           </View>
         )}
 
