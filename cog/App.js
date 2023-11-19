@@ -1,8 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { View, Text, ScrollView, Button, StyleSheet, TextInput, Image } from 'react-native';
+import { Transition, Transitioning } from 'react-native-reanimated';
 import background from './assets/background.png';
+import cogIcon from './assets/cogIcon.png';
 
 export default function App() {
+  const transition = <Transition.Together>
+    <Transition.Out type="slide-left" durationMs={400} interpolation="easeIn" />
+    <Transition.In type="slide-right" durationMs={500} />
+  </Transition.Together>;
+
+  const ref = useRef();
+
   const [step, setStep] = useState(1);
   const [caregiverInfo, setCaregiverInfo] = useState({
     name: '',
@@ -15,10 +24,31 @@ export default function App() {
   });
   const [schedule, setSchedule] = useState({});
 
+  const onNext = () => {
+    ref.current.animateNextTransition();
+    setStep(step + 1);
+  };
+
+  const onBack = () => {
+    ref.current.animateNextTransition();
+    setStep(step - 1);
+  };
+
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      {step == 1 && (
-        <View style={styles.form}>
+      <Transitioning.View ref={ref} transition={transition}>
+        {step === 1 && (
+          <View key={1} style={styles.form}>
+            <Image style={styles.mainIcon} source={require('./assets/cogIcon.png')} />
+            <Text style={styles.header}>Cognitive Therapy Support</Text>
+            <Text style={styles.normText}>The Official app for all your cognitive therapeutic needs</Text>
+            <Text style={styles.normText}>Gold Award Entry</Text>
+            <Button title="Next" onPress={onNext} />
+          </View>
+        )}
+
+      {step == 2 && (
+        <View key={2} style={styles.form}>
           <Text style={styles.header}>Caregiver Information</Text>
 
           <TextInput
@@ -38,20 +68,12 @@ export default function App() {
             placeholder="Enter Place of Work"
             onChangeText={(text) => setCaregiverInfo({ ...caregiverInfo, placeOfWork: text })}
           />
-          <Button title="Next" onPress={() => setStep(2)} />
-
-          <View style={styles.brainContainer}>
-            <Image
-              source={require('./assets/ai.png')}
-              style={styles.brain}
-            />
-
-          </View>
+          <Button title="Next" onPress={() => setStep(3)} />
         </View>
       )}
 
-      {step === 2 && (
-        <View style={styles.form}>
+      {step === 3 && (
+        <View key={3} style={styles.form}>
           <Text style={styles.header}>Patient Survey</Text>
 
           <TextInput
@@ -95,12 +117,12 @@ export default function App() {
             placeholder="Favorite TV Show"
             onChangeText={(text) => setPatientData({ ...patientData, favoriteTVShow: text })}
           />
-          <Button title="Next" onPress={() => setStep(3)} />
+          <Button title="Next" onPress={() => setStep(4)} />
         </View>
       )}
 
-      {step === 3 && (
-        <ScrollView style={styles.schedule}>
+      {step === 4 && (
+        <ScrollView key={4} style={styles.schedule}>
           <Text style={styles.weekTitle}>Week 1</Text>
           <View style={styles.scheduleGrid}>
             <View style={styles.scheduleRow}>
@@ -156,14 +178,14 @@ export default function App() {
               </View>
             </View>
           </View>
-          <Button title="Next Week" onPress={() => setStep(4)} />
+          <Button title="Next Week" onPress={() => setStep(5)} />
           <View style={styles.spaceBetButts} />
           <Button title="Back" onPress={() => setStep(1)} />
         </ScrollView>
       )}
 
-      {step === 4 && (
-        <ScrollView style={styles.schedule}>
+      {step === 5 && (
+        <ScrollView key={5} style={styles.schedule}>
           <Text style={styles.weekTitle}>Week 2</Text>
           <View style={styles.scheduleGrid}>
             <View style={styles.scheduleRow}>
@@ -216,9 +238,10 @@ export default function App() {
             </View>
           </View>
           <View style={styles.spaceBetButts} />
-          <Button title="Back" onPress={() => setStep(3)} />
+          <Button title="Back" onPress={() => setStep(1)} />
         </ScrollView>
       )}
+     </Transitioning.View>
     </ScrollView>
   );
 }
@@ -236,6 +259,10 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     textAlign: 'center',
     fontWeight: 'bold'
+  },
+  normText: {
+    textAlign: 'center',
+    marginBottom: 10,
   },
   form: {
     width: '100%',
@@ -291,5 +318,10 @@ const styles = StyleSheet.create({
   },
   spaceBetButts: {
     marginBottom: 10,
+  },
+  mainIcon: {
+    height: 300,
+    width: 300,
+    marginLeft: 35,
   }
 });
