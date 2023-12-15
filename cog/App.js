@@ -1,6 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { ImageBackground, View, Text, ScrollView, Button, StyleSheet, TextInput, Image } from 'react-native';
-import background from './assets/background.png';
+import { View, Text, ScrollView, Button, StyleSheet, TextInput, Image } from 'react-native';
 import cogIcon from './assets/cogIcon.png';
 import cogBackground from './assets/cogBackground.jpg';
 
@@ -235,20 +234,24 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
-    backgroundColor: '#115dd6',
+    backgroundColor: '#2a21db',
+    color: '#ffffff',
   },
   header: {
     fontSize: 24,
     marginBottom: 20,
     textAlign: 'center',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    color: '#ffffff',
   },
   normText: {
     textAlign: 'center',
     marginBottom: 10,
+    color: '#ffffff',
   },
   form: {
     width: '100%',
+    color: '#ffffff',
   },
   input: {
     height: 40,
@@ -256,55 +259,87 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     marginBottom: 10,
     padding: 10,
+    color: '#ffffff',
   },
   schedule: {
     width: '100%',
+    color: '#ffffff',
   },
   scheduleHeader: {
     fontSize: 20,
     fontWeight: 'bold',
     marginBottom: 10,
-    textAlign: 'center'
+    textAlign: 'center',
+    color: '#ffffff',
   },
   brainContainer: {
     bottom: -145,
     left: -17,
     width: 150,
     height: 150,
+    color: '#ffffff',
   },
   brain: {
     width: 150,
     height: 150,
+    color: '#ffffff',
   },
   activity: {
     textAlign: 'center',
     marginBottom: 20,
+    color: '#ffffff',
   },
   scheduleGrid: {
     flexDirection: 'column',
+    color: '#ffffff',
   },
   centeredScheduleDay: {
     flexDirection: 'row',
     justifyContent: 'center',
+    color: '#ffffff',
   },
   scheduleDay: {
     marginBottom: 20,
     backgroundColor: '#3399ff',
     padding: 10,
     borderRadius: 40,
+    color: '#ffffff',
   },
   weekTitle: {
     textAlign: 'center',
     fontWeight: 'bold',
     fontSize: 40,
     paddingBottom: 20,
+    color: '#ffffff',
   },
   spaceBetButts: {
     marginBottom: 10,
+    color: '#ffffff',
   },
   mainIcon: {
     height: 300,
     width: 300,
     marginLeft: 35,
-  }
+    color: '#ffffff',
+  },
+  button: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 12,
+    paddingHorizontal: 32,
+    borderRadius: 10,
+    borderColor: 'white',
+    elevation: 3,
+    backgroundColor: 'white',
+    width: 100,
+    marginLeft: 140,
+    color: '#ffffff',
+  },
+  buttonText: {
+    fontSize: 20,
+    color: '#ffffff',
+  },
+  placeholder: {
+    color: '#ffffff',
+  },
 });
